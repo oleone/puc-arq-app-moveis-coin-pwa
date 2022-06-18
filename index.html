@@ -5,9 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Coin Exposer PWA</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./assets/css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <header id="header">
+      <div id="navbar" class="container">
+        <div class="row">
+          <div class="col-12">
+            <div id="img-profile" class="bg-warning">
+              <span class="profile-text">A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sub-navbar" class="container">
+        <div class="row">
+          <div
+            class="btn-group col-12"
+            role="group"
+            aria-label="Basic radio toggle button group"
+          >
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio1"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-warning" for="btnradio1"
+              >Exchanges</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio2"
+              autocomplete="off"
+              checked
+            />
+            <label class="btn btn-outline-warning" for="btnradio2"
+              >Criptomoedas</label
+            >
+
+            <!-- <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio3"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-warning" for="btnradio3"
+              >Radio 3</label
+            > -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <span id="card-list"></span>
+
+    </main>
+
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
