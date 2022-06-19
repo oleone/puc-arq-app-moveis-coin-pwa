@@ -4,7 +4,8 @@
   "description": "",
   "main": "js/main.js",
   "scripts": {
-    "start": "live-server"
+    "start": "live-server",
+    "build": "live-server"
   },
   "repository": {
     "type": "git",
