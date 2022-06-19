@@ -1,0 +1,23 @@
+{
+  "name": "coin_exposer_pwa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oleone/puc-arq-app-moveis-coin-pwa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oleone/puc-arq-app-moveis-coin-pwa/issues"
+  },
+  "homepage": "https://github.com/oleone/puc-arq-app-moveis-coin-pwa#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
