@@ -1,1 +1,1 @@
-# A simple PWA created by PUC Minas
+# A simple PWA created for the Mobile Application Architecture course
