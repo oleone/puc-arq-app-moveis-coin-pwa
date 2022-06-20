@@ -1,15 +1,15 @@
 const COINMARKETCAP_BASEURL = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/info?slug=bitcoin,ethereum,tether,usd-coin,bnb,binance-usd,cardano,xrp,solana,dogecoin,multi-collateral-dai,polkadot-new,tron,wrapped-bitcoin,unus-sed-leo,shiba-inu,avalanche,litecoin,ftx-token,polygon,chainlink,cronos,stellar,uniswap,bitcoin-cash,near-protocol,algorand,monero,ethereum-classic,cosmos,vechain,decentraland,hedera,flow,helium,trueusd,internet-computer,tezos,theta-network,filecoin,axie-infinity,elrond-egld,apecoin-ape,bitcoin-sv,the-sandbox,kucoin-token,paxos-standard,eos,zcash,neutrino-usd,huobi-token,aave,usdd,maker,iota,bittorrent-new,the-graph,ecash,klaytn,pax-gold,okb,neo,quant,fantom,chiliz,thorchain,waves,basic-attention-token,loopring,stacks,dash,fei-usd,zilliqa,kusama,pancakeswap,gala,enjin-coin,xinfin,celo,amp,green-metaverse-token,holo,nem,nexo,kava,mina,curve-dao-token,decred,harmony,1inch,kadena,gatetoken,theta-fuel,symbol,bitcoin-gold,gnosis-gno,qtum,bora,arweave,gemini-dollar;`
 
 const state = {
-    criptoInfo: {},
-    criptoList: {}
+    data: {},
+    // criptoList: {}
 };
 const CACHE_DINAMICO = "coin_exposer_dinamico";
 
 async function loadCriptocurrenciesInfo() {
     fetch('api/criptocurrency-list.json', { mode: 'cors' }).then(result => {
         result.json().then(json => {
-            state.criptoInfo = json.data;
+            state.data = json.data;
             cacheDinamicoJson();
             renderCards(json.data);
         });
@@ -20,44 +20,24 @@ async function loadCriptocurrenciesInfo() {
     });
 }
 
-async function loadCriptocurrencies() {
-    fetch('api/criptocurrency.json', { mode: 'cors' }).then(result => {
-        result.json().then(json => {
-            cacheDinamicoJson();
-            state.criptoList = json.data;
-        });
-    }).catch(err => {
-        console.error(err);
-    }).finally(() => {
-        // 
-    });
-}
+// async function loadCriptocurrencies() {
+//     fetch('api/criptocurrency.json', { mode: 'cors' }).then(result => {
+//         result.json().then(json => {
+//             cacheDinamicoJson();
+//             state.criptoList = json.data;
+//         });
+//     }).catch(err => {
+//         console.error(err);
+//     }).finally(() => {
+//         // 
+//     });
+// }
 
-function renderCards(criptoList) {
+function renderCards(criptos) {
 
     const cardList = document.getElementById('card-list');
 
-    Object.values(criptoList).forEach((cripto, index) => {
-        // let cardHtml = `
-        //     <div id="card-${cripto.symbol.toLowerCase()}" class="col-sm-12 col-md-6 card-cripto" onClick="javascript:goToCriptoDetail(${cripto.id});">
-        //         <div class="card mb-3">
-        //             <div class="row g-0">
-        //                 <div class="col-4" id="card-image">
-        //                     <img src="${cripto.logo}" class="img-fluid img-logo-cripto rounded-start" alt="...">
-        //                 </div>
-        //                 <div class="col-8">
-        //                     <div class="card-body">
-        //                     <h5 class="card-title">${cripto.name} #${cripto.symbol}</h5>
-        //                     <p class="card-text">${sanitizeCriptoDescription(cripto.description)}</p>
-
-        //                     <p>${sanitizeCriptoTags(cripto.tags)}</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // `;
-
+    Object.values(criptos).forEach((cripto, index) => {
         let cardHtml = `
             <div id="card-${cripto.symbol.toLowerCase()}" class="col-sm-6 col-md-6 col-lg-4 card-cripto" onClick="javascript:goToCriptoDetail(\'${cripto.id}\');">
                 <div class="card mb-3">
@@ -81,7 +61,7 @@ function renderCards(criptoList) {
     });
 }
 
-function renderCriptoDetail(cripto, criptoInfo) {
+function renderCriptoDetail(cripto) {
     const html = `
         <div id="cripto-detail">
             <div class="container">
@@ -103,8 +83,6 @@ function renderCriptoDetail(cripto, criptoInfo) {
                         </div>
 
                         ${renderUrls(cripto.urls)}
-
-                        <!--<b>Circulação:</b> US ${criptoInfo.circulating_supply}-->
                     </div>
                 </div>
             </div>
@@ -144,13 +122,10 @@ function renderMicroUrl(field, object) {
 function goToCriptoDetail(criptoId) {
     const pageDetail = document.getElementById('details-page');
     pageDetail.style.display = 'block';
-    let cripto = state.criptoInfo[criptoId];
 
-    let details = state.criptoList;
+    let cripto = Object.values(state.data).find(c => c.id == criptoId);
 
-    let criptoInfo = details.find(b => b.id == criptoId);
-
-    renderCriptoDetail(cripto, criptoInfo);
+    renderCriptoDetail(cripto);
 }
 
 function goToBack() {
@@ -239,4 +214,4 @@ let intallApp = function () {
 }
 
 loadCriptocurrenciesInfo();
-loadCriptocurrencies();
+// loadCriptocurrencies();
