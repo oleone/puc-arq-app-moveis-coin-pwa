@@ -3,32 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <link href="./css/bootstrap.min.css" rel="stylesheet" />
     <link href="./css/main.css" rel="stylesheet" />
-    
+
     <title>Coin Exposer PWA</title>
 
-    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+    <!-- adsense script -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3224243005651215"
+      crossorigin="anonymous"
+    ></script>
 
-    <link rel="manifest" href="manifest.json">
-    
+    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+
+    <link rel="manifest" href="manifest.json" />
+
     <!-- iOS meta tags and icons -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="CoinExposer">
-    <link rel="apple-touch-icon" href="icons/152.png">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="CoinExposer" />
+    <link rel="apple-touch-icon" href="icons/152.png" />
 
-    <meta name="description" content="CoinExposer">
-    <meta name="theme-color" content="#0c0f12" /> 
+    <meta name="description" content="CoinExposer" />
+    <meta name="theme-color" content="#0c0f12" />
   </head>
   <body>
     <header id="header">
       <div id="navbar" class="container">
         <!-- <div class="row">
         </div> -->
-        
+
         <div id="img-profile" class="bg-warning">
           <span class="profile-text">A</span>
         </div>
@@ -93,9 +100,10 @@
 
     <footer>
       <div class="d-grid gap-2">
-        <button id="btn-install" class="btn btn-warning" type="button">Instalar</button>
+        <button id="btn-install" class="btn btn-warning" type="button">
+          Instalar
+        </button>
       </div>
-
     </footer>
 
     <script src="./js/bootstrap.bundle.min.js"></script>
@@ -104,21 +112,15 @@
     <script>
       let swRegistro = null;
 
-      if('serviceWorker' in navigator){
-
-          window.addEventListener('load', ()=>{
-
-              navigator.serviceWorker.register('service_worker.js').then((reg) => {
-
-                  console.log("Service Worker registrado com sucesso!");
-                  swRegistro = reg;
-                  intallApp();
-              });
-
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("service_worker.js").then((reg) => {
+            console.log("Service Worker registrado com sucesso!");
+            swRegistro = reg;
+            intallApp();
           });
-
+        });
       }
-
-  </script>
+    </script>
   </body>
 </html>
